@@ -1,0 +1,8 @@
+name: PreventPlayerDrop
+version: '${project.version}'
+main: org.snorklingturtle.preventplayerdrop.PreventPlayerDrop
+api-version: '1.21'
+depend: [NBTAPI]
+commands:
+  preserve:
+    description: Tags an item as preserved
