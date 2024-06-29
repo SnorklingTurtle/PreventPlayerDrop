@@ -1,7 +1,6 @@
 package org.snorklingturtle.preventplayerdrop.commands;
 
 import org.bukkit.Material;
-import static org.bukkit.ChatColor.*;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,9 +22,10 @@ public class PreserveCommand implements CommandExecutor {
         if (!(commandSender instanceof Player)) {
             return false;
         }
-        Player player = (Player) commandSender;
 
+        Player player = (Player) commandSender;
         ItemStack itemStack = player.getInventory().getItemInMainHand();
+
         if (itemStack.getType() == Material.AIR)
             return false;
 
@@ -43,12 +43,12 @@ public class PreserveCommand implements CommandExecutor {
         if (!persistentDataContainer.has(keyPreserve))
         {
             persistentDataContainer.set(keyPreserve, PersistentDataType.BOOLEAN, true);
-            player.sendMessage(YELLOW + itemName + " will be preserved in the inventory when player dies.");
+            player.sendMessage(itemName + " will be preserved in the inventory when player dies.");
         }
         else
         {
             persistentDataContainer.remove(keyPreserve);
-            player.sendMessage(YELLOW + itemName + " will no longer be preserved in the inventory when player dies.");
+            player.sendMessage(itemName + " will no longer be preserved in the inventory when player dies.");
         }
 
         itemStack.setItemMeta(itemMeta);
